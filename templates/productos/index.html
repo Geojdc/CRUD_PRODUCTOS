@@ -1,0 +1,33 @@
+{%include 'header.html'%}
+
+<h2>Listado de productos</h2>
+<!-- ahi colocar la direccion de la funcion def nuevo -->
+<a href="{{url_for('nuevo')}}" class="btn btn-success mt-3">Nuevo</a>
+<table class="table table-hover table-dark table-striped-columns mt-5">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Precio</th>
+        
+        <th colspan="2">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+    <!-- para mostrar todos los datos con un bucle -->
+     {% for item in productos%}
+      <tr>
+        <th scope="row">{{item['id']}}</th>
+        <td>{{item['descripcion']}}</td>
+        <td>{{item['cantidad']}}</td>
+        <td>{{item['precio']}}</td>
+        <td><a href="/productos/editar/{{item['id']}}" class="btn btn-warning">Editar</a></td>
+        <td><a href="/productos/eliminar/{{item['id']}}" onclick="return(confirm('Esta seguro que desea eliminar el  producto?'))" class="btn btn-danger">Eliminar</a></td>
+      </tr>
+      {%endfor%}
+       
+    </tbody>
+  </table>
+
+{%include 'footer.html'%}

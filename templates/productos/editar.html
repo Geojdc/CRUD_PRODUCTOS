@@ -1,0 +1,39 @@
+{%include 'header.html'%}
+<!-- aqui vamos a dividir en filas y columnas de bootstrap para que este centreado el formulario-->
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header">
+                Editar Producto
+            </div>
+            <div class="card-body">
+                <!-- en esta parte se coloca el def de donde va enviar el boton Enviar  en la action del form -->
+               <form action="{{url_for('actualizar')}}" method="POST">
+                    <input type="hidden" name="id" value="{{producto['id']}}">
+                    <div class="mb-3">
+                        <label for="" class="form-label">Descripción</label>
+                        <input type="text" class="form-control" name ="descripcion" value="{{producto['descripcion']}}">
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Cantidad</label>
+                        <input type="number" class="form-control" name ="cantidad" value="{{producto['cantidad']}}">
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Precio</label>
+                        <input type="number" class="form-control" name ="precio"value="{{producto['precio']}}">
+
+                    </div>
+                    <button  type ="submit" class="btn btn-primary">Enviar</button>
+               </form>
+            </div>
+        </div>
+    
+    </div>
+    <div class="col-4"></div>
+</div>
+
+
+{%include 'footer.html'%}
